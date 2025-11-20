@@ -5,14 +5,14 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Scanner;
 
-public class Biblioteca {
+public class RecipeFinder {
     public static void main(String[] args) throws IOException, InterruptedException {
         Scanner leitor = new Scanner(System.in);
-        System.out.println("Digite um livro: ");
-        var pesquisa = leitor.nextLine();
-        String pesquisaFormatada = pesquisa.replace(' ', '+').toLowerCase();
+        System.out.println("Busque uma receita: ");
+        var busca = leitor.nextLine();
+        String receitaFormatada = busca.replace(' ', '+').toLowerCase();
 
-        String endereco = "https://www.googleapis.com/books/v1/volumes?q=" + pesquisaFormatada + "&callback=handleResponse";
+        String endereco = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + receitaFormatada;
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
